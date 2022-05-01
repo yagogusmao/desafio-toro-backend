@@ -11,6 +11,11 @@ export class UserController {
     const { account } = params;
     return this.userService.getUser(account);
   }
+  @Get('/cpf/:cpf')
+  getUserByCpf(@Param() params): Promise<User> {
+    const { cpf } = params;
+    return this.userService.getUserByCpf(cpf);
+  }
 
   @Post()
   createUser(@Body() body): Promise<User> {

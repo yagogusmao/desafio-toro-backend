@@ -72,6 +72,18 @@ describe('UserService', () => {
       expect(user).rejects.toThrow(new BadRequestException('User not found'));
     });
   });
+  describe('when get user by cpf', () => {
+    it('user exist in database', async () => {
+      const user = await service.getUserByCpf(userMock.cpf);
+      expect(user).toEqual(userMock);
+    });
+    it('user not exist in database', () => {
+      mockRepository.getUserByCpf.mockReturnValue(undefined);
+      const user = service.getUserByCpf(userMock.cpf);
+
+      expect(user).rejects.toThrow(new BadRequestException('User not found'));
+    });
+  });
   describe('when updating balance of user', () => {
     it('update balance is succesfull', async () => {
       const amount = 123;

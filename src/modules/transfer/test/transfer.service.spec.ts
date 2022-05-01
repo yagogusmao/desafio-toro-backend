@@ -10,7 +10,7 @@ import {
   userMock,
 } from '../../../modules/user/test/user.mock';
 
-describe('UserService', () => {
+describe('TransferService', () => {
   let service: TransferService;
   let repository: ITransferRepository;
 
@@ -62,13 +62,13 @@ describe('UserService', () => {
   describe('when update balance of user with transfer', () => {
     it('should be updated a balance', async () => {
       mockUserService.getUser.mockReturnValue(userMock);
-      const userUpdated = await service.createTransfer(transferMock);
-      expect(userUpdated).toStrictEqual(mockUserUpdated(transferMock.amount));
+      const transfer = await service.createTransfer(transferMock);
+      expect(transfer).toStrictEqual(transferMock);
     });
     it('target account not exist', () => {
       mockUserService.getUser.mockReturnValue(undefined);
-      const userUpdated = service.createTransfer(transferMock);
-      expect(userUpdated).rejects.toThrow(
+      const transfer = service.createTransfer(transferMock);
+      expect(transfer).rejects.toThrow(
         new NotFoundException('Target account not found'),
       );
     });
@@ -77,8 +77,8 @@ describe('UserService', () => {
         ...userMock,
         cpf: '11111111111',
       });
-      const userUpdated = service.createTransfer(transferMock);
-      expect(userUpdated).rejects.toThrow(
+      const transfer = service.createTransfer(transferMock);
+      expect(transfer).rejects.toThrow(
         new BadRequestException(
           'User cpf does not match with sent account cpf',
         ),

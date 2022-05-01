@@ -17,6 +17,16 @@ export class UserService implements IUserService {
     @InjectRepository(UserRepository)
     private readonly userRepository: IUserRepository,
   ) {}
+  async getUserByCpf(cpf: string): Promise<User> {
+    this.logger.log('getUserByCpf: ' + cpf);
+    const user = await this.userRepository.getUserByCpf(cpf);
+
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
+
+    return user;
+  }
 
   updateBalance(account: string, amount: number): Promise<UpdateResult> {
     this.logger.log('updateBalance');
