@@ -30,6 +30,6 @@ export class TransferController {
   @Get(':account')
   getTransfersByUser(@Param() params): Promise<Transfer[]> {
     const { account } = params;
-    return this.transferService.getTransfersByUser(Number(account));
+    return this.transferService.getTransfersByUser(account);
   }
 }

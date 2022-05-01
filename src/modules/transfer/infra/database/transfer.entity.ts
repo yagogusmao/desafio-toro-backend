@@ -6,19 +6,19 @@ export class Transfer {
   id: number;
 
   @Column()
-  target_bank: number;
+  target_bank: string;
 
   @Column()
-  target_branch: number;
+  target_branch: string;
 
   @Column()
-  target_account: number;
+  target_account: string;
 
   @Column()
-  origin_bank: number;
+  origin_bank: string;
 
   @Column()
-  origin_branch: number;
+  origin_branch: string;
 
   @Column()
   origin_cpf: string;

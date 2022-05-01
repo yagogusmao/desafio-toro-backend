@@ -8,7 +8,7 @@ export class createUser1651192331291 implements MigrationInterface {
         columns: [
           {
             name: 'account',
-            type: 'integer',
+            type: 'varchar(6)',
             isPrimary: true,
           },
           {
@@ -23,7 +23,7 @@ export class createUser1651192331291 implements MigrationInterface {
           },
           {
             name: 'cpf',
-            type: 'varchar',
+            type: 'varchar(11)',
             isNullable: false,
             isUnique: true,
           },

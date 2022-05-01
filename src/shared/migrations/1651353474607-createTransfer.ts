@@ -15,27 +15,27 @@ export class createTransfer1651353474607 implements MigrationInterface {
           },
           {
             name: 'target_bank',
-            type: 'integer',
+            type: 'varchar(3)',
             isNullable: false,
           },
           {
             name: 'target_branch',
-            type: 'integer',
+            type: 'varchar(4)',
             isNullable: false,
           },
           {
             name: 'target_account',
-            type: 'integer',
+            type: 'varchar(6)',
             isNullable: false,
           },
           {
             name: 'origin_bank',
-            type: 'integer',
+            type: 'varchar(3)',
             isNullable: false,
           },
           {
             name: 'origin_branch',
-            type: 'integer',
+            type: 'varchar(4)',
             isNullable: false,
           },
           {
@@ -59,6 +59,6 @@ export class createTransfer1651353474607 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('tranfers');
+    await queryRunner.dropTable('transfers');
   }
 }

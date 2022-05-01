@@ -1,7 +1,7 @@
 import { CreateUserDTO } from '../Dto';
 
 export const userMock: CreateUserDTO = new CreateUserDTO(
-  123457,
+  '123457',
   '00000000004',
   'Wllan',
   1001,

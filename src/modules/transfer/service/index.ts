@@ -59,7 +59,7 @@ export class TransferService implements ITransferService {
       );
   }
 
-  async getTransfersByUser(account: number): Promise<Transfer[]> {
+  async getTransfersByUser(account: string): Promise<Transfer[]> {
     this.logger.log('getTransfersByUser');
     const user = await this.iUserService.getUser(account);
     if (!user) {

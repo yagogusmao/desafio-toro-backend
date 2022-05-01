@@ -16,20 +16,20 @@ export class UserRepository
     return user;
   }
 
-  async updateBalance(account: number, balance: number): Promise<UpdateResult> {
+  async updateBalance(account: string, balance: number): Promise<UpdateResult> {
     this.logger.log('getUser: ' + account);
     const user = await this.repository.update({ account }, { balance });
     return user;
   }
 
-  async getUser(account: number): Promise<User> {
+  async getUser(account: string): Promise<User> {
     this.logger.log('getUser: ' + account);
     const user = await this.repository.findOne({ where: { account } });
     return user;
   }
 
   createUser(
-    account: number,
+    account: string,
     name: string,
     cpf: string,
     balance: number,

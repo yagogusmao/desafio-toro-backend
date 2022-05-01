@@ -1,5 +1,5 @@
 export class CreateUserDTO {
-  public account: number;
+  public account: string;
 
   public cpf: string;
 
@@ -7,7 +7,7 @@ export class CreateUserDTO {
 
   public balance: number;
 
-  constructor(account: number, cpf: string, name: string, balance: number) {
+  constructor(account: string, cpf: string, name: string, balance: number) {
     this.account = account;
     this.cpf = cpf;
     this.name = name;

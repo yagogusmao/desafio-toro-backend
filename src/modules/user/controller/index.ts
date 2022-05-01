@@ -9,7 +9,7 @@ export class UserController {
   @Get(':account')
   getUser(@Param() params): Promise<User> {
     const { account } = params;
-    return this.userService.getUser(Number(account));
+    return this.userService.getUser(account);
   }
 
   @Post()

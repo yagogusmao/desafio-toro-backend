@@ -4,6 +4,6 @@ import { UpdateResult } from 'typeorm';
 
 export interface IUserService {
   createUser(data: CreateUserDTO): Promise<User>;
-  getUser(account: number): Promise<User>;
-  updateBalance(account: number, amount: number): Promise<UpdateResult>;
+  getUser(account: string): Promise<User>;
+  updateBalance(account: string, amount: number): Promise<UpdateResult>;
 }

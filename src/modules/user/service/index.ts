@@ -18,7 +18,7 @@ export class UserService implements IUserService {
     private readonly userRepository: IUserRepository,
   ) {}
 
-  updateBalance(account: number, amount: number): Promise<UpdateResult> {
+  updateBalance(account: string, amount: number): Promise<UpdateResult> {
     this.logger.log('updateBalance');
     return this.userRepository.updateBalance(account, amount);
   }
@@ -40,7 +40,7 @@ export class UserService implements IUserService {
     return this.userRepository.createUser(account, name, cpf, balance);
   }
 
-  async getUser(account: number): Promise<User> {
+  async getUser(account: string): Promise<User> {
     this.logger.log('getUser: ' + account);
     const user = await this.userRepository.getUser(account);
 

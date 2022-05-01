@@ -11,11 +11,11 @@ export class TransferRepository
   private readonly logger = new Logger('Transfer repository');
 
   createTransfer(
-    target_bank: number,
-    target_branch: number,
-    target_account: number,
-    origin_bank: number,
-    origin_branch: number,
+    target_bank: string,
+    target_branch: string,
+    target_account: string,
+    origin_bank: string,
+    origin_branch: string,
     origin_cpf: string,
     event: string,
     amount: number,
@@ -46,7 +46,7 @@ export class TransferRepository
 
     return this.repository.save(transfer);
   }
-  async getTransfersByUser(account: number): Promise<Transfer[]> {
+  async getTransfersByUser(account: string): Promise<Transfer[]> {
     this.logger.log('getTransfersByUser: ' + account);
 
     const transfers = await this.repository.find({

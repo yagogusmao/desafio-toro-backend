@@ -1,21 +1,21 @@
 export class CreateTransferDTO {
-  public target_bank: number;
-  public target_branch: number;
-  public target_account: number;
+  public target_bank: string;
+  public target_branch: string;
+  public target_account: string;
 
-  public origin_bank: number;
-  public origin_branch: number;
+  public origin_bank: string;
+  public origin_branch: string;
   public origin_cpf: string;
 
   public event: string;
 
   public amount: number;
   constructor(
-    target_bank: number,
-    target_branch: number,
-    target_account: number,
-    origin_bank: number,
-    origin_branch: number,
+    target_bank: string,
+    target_branch: string,
+    target_account: string,
+    origin_bank: string,
+    origin_branch: string,
     origin_cpf: string,
     event: string,
     amount: number,

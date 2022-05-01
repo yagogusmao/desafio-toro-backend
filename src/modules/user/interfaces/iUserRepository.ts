@@ -3,12 +3,12 @@ import { User } from '../infra/database';
 
 export interface IUserRepository {
   createUser(
-    account: number,
+    account: string,
     name: string,
     cpf: string,
     balance: number,
   ): Promise<User>;
-  getUser(account: number): Promise<User>;
+  getUser(account: string): Promise<User>;
   getUserByCpf(cpf: string): Promise<User>;
-  updateBalance(account: number, amount: number): Promise<UpdateResult>;
+  updateBalance(account: string, amount: number): Promise<UpdateResult>;
 }

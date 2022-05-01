@@ -3,5 +3,5 @@ import { CreateTransferDTO } from '../Dto';
 
 export interface ITransferService {
   createTransfer(data: CreateTransferDTO): Promise<Transfer>;
-  getTransfersByUser(account: number): Promise<Transfer[]>;
+  getTransfersByUser(account: string): Promise<Transfer[]>;
 }
