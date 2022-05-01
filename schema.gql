@@ -1,0 +1,27 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  account: ID!
+  name: String!
+  cpf: String!
+  balance: Float!
+}
+
+type Transfer {
+  id: ID!
+  target_bank: Float!
+  target_branch: Float!
+  target_account: Float!
+  origin_bank: Float!
+  origin_branch: Float!
+  origin_cpf: String!
+  event: String!
+  amount: Float!
+}
+
+type Query {
+  user: User!
+  transfer: Transfer!
+}

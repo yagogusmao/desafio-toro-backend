@@ -1,9 +1,11 @@
 import { Module } from '@nestjs/common';
 import { getConnectionOptions } from 'typeorm';
 import { ConfigModule } from '@nestjs/config';
-import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { UserModule } from '@modules/user/user.module';
+import { TransferModule } from '@modules/transfer/transfer.module';
+import { AppController } from 'app.controller';
+import { AppService } from 'app.service';
 
 @Module({
   imports: [
@@ -14,12 +16,10 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
           autoLoadEntities: true,
         }),
     }),
-    GraphQLModule.forRoot<ApolloDriverConfig>({
-      driver: ApolloDriver,
-      autoSchemaFile: 'schema.gql',
-    }),
+    UserModule,
+    TransferModule,
   ],
-  controllers: [],
-  providers: [],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}

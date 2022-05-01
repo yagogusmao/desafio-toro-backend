@@ -1,9 +1,9 @@
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Module, Provider } from '@nestjs/common';
-import { UserResolver } from './infra/graphql/user.resolver';
 import { UserRepository } from './infra/database/user.repository';
 import { UserService } from './service';
 import { I_USER_SERVICE } from '../../shared/utils/constants';
+import { UserController } from './controller';
 
 const userServiceProvider: Provider = {
   provide: I_USER_SERVICE,
@@ -12,7 +12,8 @@ const userServiceProvider: Provider = {
 
 @Module({
   imports: [TypeOrmModule.forFeature([UserRepository])],
-  providers: [UserResolver, userServiceProvider],
+  providers: [userServiceProvider, UserService],
+  controllers: [UserController],
   exports: [userServiceProvider],
 })
 export class UserModule {}
