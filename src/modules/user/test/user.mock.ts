@@ -7,7 +7,7 @@ export const userMock: CreateUserDTO = new CreateUserDTO(
   1001,
 );
 
-export const mockUserUpdated = {
+export const mockUserUpdated = (amount: number) => ({
   ...userMock,
-  balance: userMock.balance + 123,
-};
+  balance: userMock.balance + amount,
+});

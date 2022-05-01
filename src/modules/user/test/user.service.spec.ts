@@ -13,7 +13,7 @@ describe('UserService', () => {
     getUser: jest.fn().mockReturnValue(undefined),
     getUserByCpf: jest.fn().mockReturnValue(undefined),
     createUser: jest.fn().mockReturnValue(userMock),
-    updateBalance: jest.fn().mockReturnValue(mockUserUpdated),
+    updateBalance: jest.fn().mockReturnValue(mockUserUpdated(123)),
   };
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -77,7 +77,7 @@ describe('UserService', () => {
       const amount = 123;
 
       const userUpdated = await service.updateBalance(userMock.account, amount);
-      expect(userUpdated).toBe(mockUserUpdated);
+      expect(userUpdated).toStrictEqual(mockUserUpdated(amount));
     });
   });
 });

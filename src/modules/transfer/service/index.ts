@@ -10,7 +10,7 @@ import { ITransferRepository, ITransferService } from '../interfaces';
 import { IUserService } from '@modules/user/interfaces';
 import { InjectRepository } from '@nestjs/typeorm';
 import { TransferRepository, Transfer } from '../infra/database';
-import { I_USER_SERVICE } from '@shared/utils/constants';
+import { I_USER_SERVICE } from '../../../shared/utils/constants';
 
 @Injectable()
 export class TransferService implements ITransferService {
@@ -43,20 +43,17 @@ export class TransferService implements ITransferService {
       );
     }
     const newBalance = user.balance + amount;
-    return this.iUserService
-      .updateBalance(target_account, newBalance)
-      .then(() =>
-        this.transferRepository.createTransfer(
-          target_bank,
-          target_branch,
-          target_account,
-          origin_bank,
-          origin_branch,
-          origin_cpf,
-          event,
-          amount,
-        ),
-      );
+    await this.iUserService.updateBalance(target_account, newBalance);
+    return this.transferRepository.createTransfer(
+      target_bank,
+      target_branch,
+      target_account,
+      origin_bank,
+      origin_branch,
+      origin_cpf,
+      event,
+      amount,
+    );
   }
 
   async getTransfersByUser(account: string): Promise<Transfer[]> {
